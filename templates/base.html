@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My microscope</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <style>
+        body
+{
+	background-color: #f3f7fe;
+}
+        #account{
+            text-align:center;
+            background-color: rgba(0, 1, 62, 0.22);
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">My microscope</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+      </li>
+
+          {% if user.is_authenticated %}
+              <li class="nav-item">
+            <a class="nav-link disabled" href="#">{{ user.username }}</a>
+              </li>
+              <li class="nav-item">
+            <a  class="nav-link"  href="{% url 'logout' %}">logout</a>
+              </li>
+            {% else %}
+              <li class="nav-item">
+            <a  class="nav-link"  href="{% url 'login' %}">login</a>
+              </li>
+              <li class="nav-item">
+            <a  class="nav-link"  href="{% url 'register' %}">register</a>
+              </li>
+            {% endif %}
+
+    </ul>
+  </div>
+</nav>
+ <div class="container">
+            {% block content %}
+            {% endblock %}
+ </div>
+
+</body>
+</html>
