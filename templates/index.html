@@ -3,9 +3,50 @@
     <div class="row">
     <div class="col-sm">
         <p>camera area</p>
+        {% if src %}
+
+            <img id="snap" src={{ src }} alt="">
+        {% else %}
+            <p>camera not connected</p>
+        {% endif %}
     </div>
     <div class="col-sm">
         <p>manipulate area</p>
+        <div class="row">
+            <form action="" name="form1" id="form1" method="POST">
+                {% csrf_token %}
+{#            <input type="hidden" id="image" value={{ src }}>#}
+            <div class="col">
+            <label for="X" >X:</label>
+        <input  class="form-control" type="text" id="X" name="X" placeholder={{ X }} >
+            </div>
+        <div class="col">
+            <label for="Y" >Y:</label>
+        <input  class="form-control" type="text" id="Y" name="Y" placeholder={{ Y }} >
+        </div>
+                <div class="col">
+            <label for="Z" >Z:</label>
+        <input  class="form-control" type="text" id="Z" name="Z" placeholder={{ Z }} >
+        </div>
+        <button type="submit" class="btn btn-primary">move</button>
+        </form></div>
+
+        <form action="/save/" name="form2" id="form2" method="POST">
+            {% csrf_token %}
+            <input type="hidden" id="image" name="image" value={{ src }}>
+            <input type="hidden" id="x" name="x" value={{ X }}>
+             <input type="hidden" id="y" name="y" value={{ Y }}>
+             <input type="hidden" id="z" name="z" value={{ Z }}>
+            <label for="status1">status 1</label>
+            <input type="radio" id="status1" name="status" value="status1">
+            <label for="status2">status 2</label>
+            <input type="radio" id="status2" name="status" value="status2">
+            <button type="submit" class="btn btn-primary" > save picture </button>
+        </form>
+
+
+
+        <a href="/comparison/"><button type="button" class="btn btn-primary" > comparison </button></a>
     </div>
     </div>
 {% endblock %}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="row">
+{#        <div class="col-sm">#}
+{#            <p>camera area</p>#}
+{#            {% if src %}#}
+{##}
+{#                <img id="snap" src={{ src }} alt="">#}
+{#            {% else %}#}
+{#                <p>camera not connected</p>#}
+{#            {% endif %}#}
+{#        </div>#}
+        <div class="col-sm">
+            <p>manipulate area</p>
+            <div class="row">
+                <form action="" name="form1" id="form1" method="POST">
+                    {% csrf_token %}
+                    <div class="col">
+                        <label for="position">position list:</label>
+                        <input class="form-control" type="text" id="position" name="position"
+                               placeholder='x1,y1 x2,y2 ... xn,yn'>
+                    </div>
+                    <div class="col">
+                        <label for="time">time gap:</label>
+                        <input class="form-control" type="text" id="time" name="time" placeholder='1'>
+                    </div>
+                    <div class="col">
+                        <label for="loop">how many loops to execute:</label>
+                        <input class="form-control" type="text" id="loop" name="loop" placeholder='3'>
+                    </div>
+                    <button type="submit" class="btn btn-primary"> execute and save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

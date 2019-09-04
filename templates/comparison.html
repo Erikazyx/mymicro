@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="row">
+        <div class="col-sm">
+            {% if src1 and src2 %}
+
+                <img name="snap" src={{ src1 }} alt="">
+                <img name="snap" src={{ src2 }} alt="">
+            {% else %}
+                <p>save picture first</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
