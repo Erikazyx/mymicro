@@ -20,8 +20,11 @@ pip install mod_WSGI‑4.6.7+ap24vc14‑cp36‑cp36m‑win_amd64.whl
 when it installed successfully, run another command:
 mod_WSGI-express module-config
 it will return 3 line of file address, like following:
- 
-Figure B.1 WSGI file address
+
+LoadFile "c:/users/azyxa/appdata/local/programs/python/python36/python.dll"
+LoadModule wsgi_module "c:/users/azyxa/appdata/local/programs/python/python36/lib/site-packages/mod_wsgi/server/mod_wsgi.cp36-win_amd64.pyd"
+WSGIPythonHome "c:/users/azyxa/appdata/local/programs/python/python36"
+
 Copy this three lines and paste to httpd.conf
 Add the following lines too:
 WSGIPythonPath D:\your\directory\webservice\pure
@@ -39,7 +42,8 @@ Listen IP address:port
 ServerName address:port
 Open windows firewall and add an inbound rule, choose TCP port type and enter the port which you just set in http.conf
 B.5 Device configuration
-1.compile the micro-manager API ,see: https://github.com/zfphil/micro-manager-python3
+1.Download Micro-Manager-beta3.0 at:https://micro-manager.org/wiki/Micro-Manager_Nightly_Builds
+compile the micro-manager API ,see: https://github.com/zfphil/micro-manager-python3
 2.Find your devices on this web site: https://Micro-Manager.org/wiki/Device_Support
 Open snap.py, in the function named initial(), change the demo device(like 'Cam', 'DemoCamera', 'DCam') to your own device. 
 Open settings.py, modify ALLOWED_HOSTS = ['YOUR IP ADDRESS',’SERVERNAME’]
